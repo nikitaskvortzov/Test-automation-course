@@ -1,4 +1,4 @@
-package test;
+package Homework;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,8 +10,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Random;
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class Homework2Test {
 
@@ -35,7 +33,7 @@ public class Homework2Test {
     @DisplayName("Test isEven with a random number 1..100 (Test)")
     void testIsEvenSingle() {
         int n = RANDOM.nextInt(100) + 1; // 1..100
-        boolean result = test.Homework1.isEven(n);
+        boolean result = Homework1.isEven(n);
         System.out.println("Input: " + n + " Output: " + result);
         if (n % 2 == 0) {
             System.out.println("TEST PASSED: isEven(" + n + ")");
@@ -50,7 +48,7 @@ public class Homework2Test {
         boolean allPassed = true;
         for (int i = 0; i < 20; i++) {
             int age = RANDOM.nextInt(100); // 0..99
-            String access = test.Homework1.checkAccess(age);
+            String access = Homework1.checkAccess(age);
             System.out.println("Input age: " + age + " -> " + access);
             boolean pass = (age > 18 && "Allowed".equals(access)) || (age <= 18 && "Denied".equals(access));
             if (!pass) {
@@ -68,7 +66,7 @@ public class Homework2Test {
     @DisplayName("Test getGrade with single random score (Test)")
     void testGetGradeSingle() {
         int score = RANDOM.nextInt(101);
-        String grade = test.Homework1.getGrade(score);
+        String grade = Homework1.getGrade(score);
         boolean pass = score >= 0 && score <= 100 && grade != null;
         System.out.println("Score: " + score + " -> Grade: " + grade);
         if (score < 0 || score > 100) {
@@ -82,7 +80,7 @@ public class Homework2Test {
     @DisplayName("Test getGrade boundary (Test)")
     void testGetGradeBoundarySingle() {
         int score = 50;
-        String grade = test.Homework1.getGrade(score);
+        String grade = Homework1.getGrade(score);
         boolean pass = "C".equals(grade);
         System.out.println("Score: " + score + " -> Grade: " + grade);
         if (pass) {
@@ -98,7 +96,7 @@ public class Homework2Test {
     @DisplayName("RepeatedTest: isEven random (repeat 2) (Test)")
     void repeatedTestIsEven() {
         int n = RANDOM.nextInt(100) + 1;
-        boolean result = test.Homework1.isEven(n);
+        boolean result = Homework1.isEven(n);
         System.out.println("Input: " + n + " Output: " + result);
         if (n % 2 == 0) {
             System.out.println("TEST PASSED: isEven(" + n + ")");
@@ -111,7 +109,7 @@ public class Homework2Test {
     @DisplayName("RepeatedTest: checkAccess random ages (repeat 2) (Test)")
     void repeatedTestCheckAccess() {
         int age = RANDOM.nextInt(100);
-        String access = test.Homework1.checkAccess(age);
+        String access = Homework1.checkAccess(age);
         boolean pass = ("Allowed".equals(access) && age > 18) || ("Denied".equals(access) && age <= 18);
         System.out.println("Input age: " + age + " -> " + access);
         if (pass) {
@@ -125,7 +123,7 @@ public class Homework2Test {
     @DisplayName("RepeatedTest: getGrade random score (repeat 2) (Test)")
     void repeatedTestGetGrade() {
         int score = RANDOM.nextInt(101);
-        String grade = test.Homework1.getGrade(score);
+        String grade = Homework1.getGrade(score);
         boolean pass = score >= 0 && score <= 100 && grade != null;
         System.out.println("Score: " + score + " -> Grade: " + grade);
         if (pass) {
@@ -139,7 +137,7 @@ public class Homework2Test {
     @DisplayName("RepeatedTest: getGrade boundary check (repeat 2) (Test)")
     void repeatedTestGetGradeBoundary() {
         int score = 81;
-        String grade = test.Homework1.getGrade(score);
+        String grade = Homework1.getGrade(score);
         boolean pass = "A".equals(grade);
         System.out.println("Score: " + score + " -> Grade: " + grade);
         if (pass) {
@@ -155,7 +153,7 @@ public class Homework2Test {
     @MethodSource("provideScores")
     @DisplayName("ParameterizedTest: getGrade with random scores 0..100 (Test)")
     void parameterizedTestGetGrade(int score) {
-        String grade = test.Homework1.getGrade(score);
+        String grade = Homework1.getGrade(score);
         boolean pass = score >= 0 && score <= 100 && grade != null;
         System.out.println("Score: " + score + " -> Grade: " + grade);
         if (pass) {
@@ -169,7 +167,7 @@ public class Homework2Test {
     @MethodSource("provideScores")
     @DisplayName("ParameterizedTest: isEven with scores (Test)")
     void parameterizedTestIsEven(int score) {
-        boolean res = test.Homework1.isEven(score);
+        boolean res = Homework1.isEven(score);
         System.out.println("Score: " + score + " -> isEven: " + res);
         System.out.println("TEST PASSED: isEven(" + score + ") == " + res);
     }
@@ -178,7 +176,7 @@ public class Homework2Test {
     @MethodSource("provideScores")
     @DisplayName("ParameterizedTest: checkAccess with scores (Test)")
     void parameterizedTestCheckAccess(int score) {
-        String access = test.Homework1.checkAccess(score);
+        String access = Homework1.checkAccess(score);
         boolean pass = "Allowed".equals(access) || "Denied".equals(access);
         System.out.println("Score: " + score + " -> Access: " + access);
         if (pass) {
@@ -192,7 +190,7 @@ public class Homework2Test {
     @MethodSource("provideScores")
     @DisplayName("ParameterizedTest: another getGrade (Test)")
     void parameterizedTestGetGradeAnother(int score) {
-        String grade = test.Homework1.getGrade(score);
+        String grade = Homework1.getGrade(score);
         boolean pass = score >= 0 && score <= 100 && grade != null;
         System.out.println("Score: " + score + " -> Grade: " + grade);
         if (pass) {
