@@ -7,11 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-
 import java.util.Random;
 import java.util.stream.Stream;
 
 public class Homework2Test {
+
+
 
     private static final Random RANDOM = new Random();
 

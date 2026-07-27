@@ -18,6 +18,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params")
     // Source: https://mvnrepository.com/artifact/org.assertj/assertj-core
     testImplementation("org.assertj:assertj-core:3.27.7")
+    // Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    implementation("io.rest-assured:rest-assured:5.5.6")
 }
 
 tasks.test {
@@ -46,3 +48,4 @@ tasks.register("finalizeTestRun") {
 tasks.named("test") {
     finalizedBy("finalizeTestRun")
 }
+
