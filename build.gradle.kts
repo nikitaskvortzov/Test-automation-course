@@ -1,3 +1,4 @@
+
 import java.util.concurrent.atomic.AtomicBoolean
 
 plugins {
@@ -20,6 +21,7 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.27.7")
     // Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured
     implementation("io.rest-assured:rest-assured:5.5.6")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
 }
 
 tasks.test {
@@ -43,6 +45,7 @@ tasks.register("finalizeTestRun") {
     doLast {
         println("Test run is over")
     }
+
 }
 
 tasks.named("test") {

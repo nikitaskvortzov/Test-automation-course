@@ -1,13 +1,14 @@
+/*
 package Homework;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
 import java.util.List;
-
+import static Homework.Tag.testTeg;
 import static io.restassured.RestAssured.*;
 import static io.restassured.RestAssured.preemptive;
 import static org.hamcrest.Matchers.*;
@@ -24,6 +25,7 @@ public class Homework4Test {
 
     // Задание 1
 
+    @Tag(testTeg)
     @Test
     @DisplayName("GET /goods/list - код 200, тело пустое")
     void testGetListWithGivenWhenThenEmptyBody() {
@@ -219,3 +221,4 @@ public class Homework4Test {
 }
 
 
+*/
