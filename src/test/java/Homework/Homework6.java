@@ -66,6 +66,9 @@ public class Homework6 {
         SelenideElement card = $x("//div[@class='product-card' and @data-name='" + Config.getStartProductName() + "']");
         SelenideElement basket = $x("//*[@id='open-cart-btn']");
         card.dragAndDrop(DragAndDropOptions.to(basket));
+
+        $x("//span[@id='cart-count']").shouldHave(Condition.text("1"));
+        $(".toast").shouldHave(Condition.text("TestDnD (1 шт.) добавлен в корзину"));
     }
 
     @Test
