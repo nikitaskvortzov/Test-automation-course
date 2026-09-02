@@ -18,42 +18,33 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("org.junit.jupiter:junit-jupiter-params")
-    // Source: https://mvnrepository.com/artifact/org.assertj/assertj-core
     testImplementation("org.assertj:assertj-core:3.27.7")
-    // Source: https://mvnrepository.com/artifact/io.rest-assured/rest-assured
     implementation("io.rest-assured:rest-assured:5.5.6")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
-    // Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     implementation("org.seleniumhq.selenium:selenium-java:4.47.0")
     implementation("io.github.bonigarcia:webdrivermanager:5.4.0")
     implementation("org.slf4j:slf4j-simple:2.0.7")
-    // Source: https://mvnrepository.com/artifact/com.codeborne/selenide
     implementation("com.codeborne:selenide:7.17.0")
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-
-val runAllTests by tasks.registering(Test::class) {
-    description = "Запускает все тесты проекта."
-    group = "verification"
+tasks.named<Test>("test") {
     useJUnitPlatform()
 
     testLogging {
         events("PASSED", "FAILED", "SKIPPED")
     }
+
+    finalizedBy("finalizeTestRun")
 }
 
-val firstTestDone = AtomicBoolean(false)
+tasks.register("runAllTests") {
+    group = "verification"
+    description = "Запускает все тесты проекта."
+    dependsOn(tasks.named("test"))
+}
 
 tasks.register("finalizeTestRun") {
-    dependsOn(runAllTests)
     doLast {
         println("Test run is over")
     }
-}
-
-tasks.named("test") {
-    finalizedBy("finalizeTestRun")
 }

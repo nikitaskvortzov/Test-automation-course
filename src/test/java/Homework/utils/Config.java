@@ -13,7 +13,9 @@ public class Config { private static final String PROPS_FILE = "/config.properti
     private static String adminUsername;
     private static String adminPassword;
     private static String startProductName;
+    private static String startProductName2;
     private static String startProductPrice;
+    private static String startProductPrice2;
 
     static {
         try (InputStream is = Config.class.getResourceAsStream(PROPS_FILE)) {
@@ -32,7 +34,9 @@ public class Config { private static final String PROPS_FILE = "/config.properti
         adminUsername = PROPS.getProperty("admin.username");
         adminPassword = PROPS.getProperty("admin.password");
         startProductName = PROPS.getProperty("startProduct.name");
+        startProductName2 = PROPS.getProperty("startProduct.name2");
         startProductPrice = PROPS.getProperty("startProduct.price");
+        startProductPrice2 = PROPS.getProperty("startProduct.price2");
 
         System.out.println("Config:");
         System.out.println("  baseUrl=" + baseUrl);
@@ -40,7 +44,9 @@ public class Config { private static final String PROPS_FILE = "/config.properti
         System.out.println("  timeoutFindElements=" + timeoutFindElements);
         System.out.println("  loggingMode=" + loggingMode);
         System.out.println("  startProduct.name=" + startProductName);
+        System.out.println("  startProduct.name2=" + startProductName2);
         System.out.println("  startProduct.price=" + startProductPrice);
+        System.out.println("  startProduct.price=" + startProductPrice2);
     }
 
     public static String getBaseUrl() { return baseUrl; }
@@ -51,5 +57,6 @@ public class Config { private static final String PROPS_FILE = "/config.properti
     public static String getAdminPassword() { return adminPassword; }
     public static String getStartProductName() { return startProductName; }
     public static String getStartProductPrice() { return startProductPrice; }
-
+    public static String getStartProductName2() { return startProductName2; }
+    public static String getStartProductPrice2() { return startProductPrice2; }
 }

@@ -83,6 +83,8 @@ public class Homework6 {
         $x("//*[@data-action='remove']").shouldBe(Condition.visible).click();
 
         $("#total-price").shouldBe(Condition.visible).shouldHave(Condition.text("0"));
+        $x("//*[@id='cart-items']//p[@id='empty-cart']").shouldBe(Condition.visible)
+                .shouldHave(Condition.text("Пусто"));
     }
 
 }
