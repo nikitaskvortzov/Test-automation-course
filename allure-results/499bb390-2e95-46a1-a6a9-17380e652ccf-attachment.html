@@ -1,0 +1,28 @@
+<div>POST to http://localhost:8080/goods/add</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;price&quot;: 12.34,
+    &quot;name&quot;: &quot;TestProduct-46f9678e-06b8-4cd1-8fd5-dbd2c5fc78c3&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Basic YWRtaW46c2VjcmV0MTIz</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;http://localhost:8080/goods/add&#39; -H &#39;Authorization: Basic YWRtaW46c2VjcmV0MTIz&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;price&quot;: 12.34,
+    &quot;name&quot;: &quot;TestProduct-46f9678e-06b8-4cd1-8fd5-dbd2c5fc78c3&quot;
+}&#39;
+    </div>
+
