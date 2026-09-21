@@ -43,26 +43,91 @@ allure {
     version.set("2.42.1")
 }
 
-
-
-tasks.named<Test>("test") {
+// Общая настройка тестов
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 
     testLogging {
-        events("PASSED", "FAILED", "SKIPPED")
+        events(
+            "PASSED",
+            "FAILED",
+            "SKIPPED"
+        )
     }
 
     finalizedBy("finalizeTestRun")
 }
 
+// Запуск всех тестов
+tasks.named<Test>("test") {
+    include("**/*.class")
+}
+
+// API Smoke-тесты
+tasks.register<Test>("smokeApiTest") {
+    group = "verification"
+    description = "Запускает API Smoke-тесты"
+
+    dependsOn(tasks.named("testClasses"))
+
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+
+    include(
+        "**/Api_tests/**/*Test.class",
+        "**/Api_tests/**/*Tests.class",
+        "**/Api_tests/**/*TestCase.class"
+    )
+
+    testClassesDirs = sourceSets["test"].output.classesDirs
+    classpath = sourceSets["test"].runtimeClasspath
+}
+
+// UI Smoke-тесты
+tasks.register<Test>("smokeUiTest") {
+    group = "verification"
+    description = "Запускает UI Smoke-тесты"
+
+    dependsOn(tasks.named("testClasses"))
+
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+
+    include(
+        "**/UI_tests/**/*Test.class",
+        "**/UI_tests/**/*Tests.class",
+        "**/UI_tests/**/*TestCase.class"
+    )
+
+    testClassesDirs = sourceSets["test"].output.classesDirs
+    classpath = sourceSets["test"].runtimeClasspath
+}
+
+// Общий Smoke-прогон API и UI
+tasks.register("smokeTest") {
+    group = "verification"
+    description = "Запускает API и UI Smoke-тесты"
+
+    dependsOn(
+        tasks.named("smokeApiTest"),
+        tasks.named("smokeUiTest")
+    )
+}
+
+// Запуск всех тестов проекта
 tasks.register("runAllTests") {
     group = "verification"
-    description = "Запускает все тесты проекта."
+    description = "Запускает все тесты проекта"
+
     dependsOn(tasks.named("test"))
 }
 
+// Завершение прогона
 tasks.register("finalizeTestRun") {
     doLast {
         println("Test run is over")
     }
 }
+

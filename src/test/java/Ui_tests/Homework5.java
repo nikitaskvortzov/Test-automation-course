@@ -1,4 +1,4 @@
-package Homework;
+package Ui_tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -29,7 +29,7 @@ public class Homework5 {
 
     public void navigateToHome() {
         if (driver != null) {
-            driver.get("http://localhost:8080");
+            driver.get(Common.Config.getBaseUrl());
         }
     }
 
@@ -63,13 +63,13 @@ public class Homework5 {
                     ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Username']"))
             );
             userInput.clear();
-            userInput.sendKeys("admin");
+            userInput.sendKeys(Common.Config.getAdminUsername());
 
             WebElement passInput = wait.until(
                     ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Password']"))
             );
             passInput.clear();
-            passInput.sendKeys("secret123");
+            passInput.sendKeys(Common.Config.getAdminPassword());
 
             WebElement signInBtn = wait.until(
                     ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'Sign in')]"))
@@ -86,7 +86,7 @@ public class Homework5 {
                     ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Цена']"))
             );
             priceInput.clear();
-            priceInput.sendKeys("33");
+            priceInput.sendKeys(Common.Config.getStartProductPrice2());
 
             WebElement createBtn = wait.until(
                     ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(.,'Создать')]"))

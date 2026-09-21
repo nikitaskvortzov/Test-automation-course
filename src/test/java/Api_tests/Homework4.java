@@ -1,4 +1,4 @@
-package Homework;
+package Api_tests;
 
 import io.restassured.response.Response;
 
@@ -11,7 +11,7 @@ public class Homework4 {
     // Получить список товаров: GET /goods/list
     public Response getGoods() {
         Response resp = given()
-                .baseUri("http://localhost:8080")
+                .baseUri(Common.Config.getBaseUrl())
                 .when()
                 .get("/goods/list")
                 .then()
@@ -40,7 +40,7 @@ public class Homework4 {
         String payload = "{ \"name\": \"" + name + "\", \"price\": " + price + " }";
 
         return given()
-                .baseUri("http://localhost:8080")
+                .baseUri(Common.Config.getBaseUrl())
                 .contentType("application/json")
                 .body(payload)
                 .when()
@@ -54,7 +54,7 @@ public class Homework4 {
 
         String payload = "{ \"name\": \"" + newName + "\", \"price\": " + newPrice + " }";
         return given()
-                .baseUri("http://localhost:8080")
+                .baseUri(Common.Config.getBaseUrl())
                 .contentType("application/json")
                 .pathParam("id", id)
                 .body(payload)

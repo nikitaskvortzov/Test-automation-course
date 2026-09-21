@@ -1,4 +1,4 @@
-package Homework;
+package Common;
 
 import java.util.List;
 import java.util.Arrays;
